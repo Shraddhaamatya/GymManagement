@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>Membership Type</h3>
+    </div>
+    <div class="module-body">
+        
+        <div class="col-md-9">
+        <a href="@Url.Action("Add", "MembershipType")" id="Add" class = "btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Create New</a>
+        <div id="div-record">
+            @Html.Partial("_Details")
+        </div>
+    </div>
+ 
+ 
+    <div class="modal fade" id="Add-Model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New Membership Type</h4>
+                </div>
+                <div class="divForAdd">
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="Edit-Model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Update Membership Type</h4>
+                </div>
+                <div class="divForUpdate">
+                </div>
+            </div>
+        </div>
+    </div>
+         
+    </div>
+</div>

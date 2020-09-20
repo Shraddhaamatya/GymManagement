@@ -1,0 +1,63 @@
+﻿@model GymManagement.Models.tblMembershipType
+
+@{
+    ViewBag.Title = "CreateMembershipType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="module">
+    <div class="module-head">
+        <h3>Membership Type</h3>
+    </div>
+    <div class="module-body">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>New Membership Type</legend>
+
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MembershipName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.MembershipName)
+                    @Html.ValidationMessageFor(model => model.MembershipName)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Price)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+                <div class="editor-field">
+                    <h2>@ViewBag.Message</h2>
+                </div>
+                <p>
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </p>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

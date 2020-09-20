@@ -1,0 +1,116 @@
+﻿@model GymManagement.Models.ViewModel.MeasurementViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    // Except only numbers and dot (.) for salary textbox
+    function onlyDotsAndNumbers(event) {
+        var charCode = (event.which) ? event.which : event.keyCode
+        if (charCode == 46) {
+            return true;
+        }
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+
+
+    </script>
+<div class="module">
+    <div class="module-head">
+        <h3>Add Measurement</h3>
+    </div>
+<div class="module-body">
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+  <span class="alert-danger">
+        @Html.ValidationSummary()
+    </span>
+    <div class="modal-body">
+
+         @Html.HiddenFor(model => model.MeasurementId)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MemberId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.MemberId, new SelectList(ViewBag.Fullname,"MemberId","Fullname"),"Select Member")
+            @Html.ValidationMessageFor(model => model.MemberId)
+        </div>
+
+        <div class="editor-label">
+            Weight(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Weight, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Weight)
+        </div>
+        <div class="editor-label">
+           Chest(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Chest, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Chest)
+        </div>
+        <div class="editor-label">
+            Waist(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Weist, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Weist)
+        </div>
+
+        <div class="editor-label">
+           Hip(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Hip, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Hip)
+        </div>
+        <div class="editor-label">
+           Thigh(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Thigh, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Thigh)
+        </div>
+        <div class="editor-label">
+            Bicep(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Bicep, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Bicep)
+        </div>
+        <div class="editor-label">
+          Forearm(inch)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Forearm, new {@onkeypress="return onlyDotsAndNumbers(event)" })
+            @Html.ValidationMessageFor(model => model.Forearm)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MeasurementDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.MeasurementDate, "{0:MM/dd/yyyy}")
+            @Html.ValidationMessageFor(model => model.MeasurementDate)
+        </div>
+          <div class="editor-field">
+              <h2>@ViewBag.Message</h2>
+              </div>
+
+    </div>
+    <div class="modal-footer">
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+
+                    <button type="submit" class="btn btn-primary" name="cmd"><i class="fa fa-check"></i>&nbsp;Save</button>
+                </div>
+}
+
+</div>
+    </div>

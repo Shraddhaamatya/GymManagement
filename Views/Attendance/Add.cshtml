@@ -1,0 +1,67 @@
+﻿@model GymManagement.Models.ViewModel.AttendanceViewModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>Add Attendance</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+            <div class="module-body table">
+
+                @using (Html.BeginForm())
+                {
+                   
+
+                    <span class="alert-danger">
+                      
+                    </span>
+                    <div class="modal-body">
+                        
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.MemberId)
+                        </div>
+                        <div class="editor-field">
+                           <div class="editor-field">
+            @Html.DropDownListFor(model => model.MemberId, new SelectList(ViewBag.Fullname,"MemberId","Fullname"),"Select Member")
+            @Html.ValidationMessageFor(model => model.MemberId)
+        </div>
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Status)
+                        </div>
+                        <div class="editor-field">
+                          
+  @Html.RadioButtonFor(model => model.Status, "P", new { Checked = "checked" })Present
+             @Html.RadioButtonFor(model => model.Status, "A")Absent
+
+
+                        </div>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.AttendanceDate)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.AttendanceDate, "{0:MM/dd/yyyy}", new {@readonly=true })
+                            @Html.ValidationMessageFor(model => model.AttendanceDate)
+                        </div>
+
+                        <h2>@ViewBag.Message</h2>
+                    </div>
+                    <div class="modal-footer">
+      
+        <button type="submit" class="btn btn-primary" name="cmd"><i class="fa fa-check"></i>&nbsp; Submit</button>
+    </div>
+                }
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

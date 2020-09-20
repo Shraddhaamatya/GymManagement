@@ -1,0 +1,84 @@
+﻿@model GymManagement.Models.ViewModel.MailViewModel
+
+
+@{
+    ViewBag.Title = "MessageSender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>List of Contact</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+
+            <div class="module-body table">
+
+
+                <table class="datatable-1 table table-bordered table-striped	 display" width="100%">
+                    <tr>
+
+                        <th>Email
+                        </th>
+
+
+                        <th>Fullname
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in ViewBag.list)
+                    {
+                        <tr>
+
+                            <td>
+                                @item.Email
+                            </td>
+
+                            <td>
+                                @item.Fullname
+                            </td>
+
+
+                        </tr>
+                    }
+
+                </table>
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        <legend>MailViewModel</legend>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Subject)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Subject)
+                            @Html.ValidationMessageFor(model => model.Subject)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Message)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextAreaFor(model => model.Message, 3, 4, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Message)
+                        </div>
+
+
+
+                        <p>
+                            <input type="submit" value="Send Mail" />
+                        </p>
+                        @ViewBag.Message
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

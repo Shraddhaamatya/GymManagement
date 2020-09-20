@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "SuccessfullMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>Success</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+            @ViewBag.Message
+            <a href="@Url.Action("MessageSender", "Member")"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Back To List</a>
+            </div>
+        </div>
+    </div>
+

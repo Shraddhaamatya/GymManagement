@@ -1,0 +1,37 @@
+﻿@model GymManagement.Models.ViewModel.MailViewModel
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>MailViewModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Message, 3, 4, new { @class="form-control"})
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Send Mail" />
+        </p>
+    </fieldset>
+}
+
+

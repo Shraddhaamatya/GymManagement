@@ -1,0 +1,57 @@
+﻿@model GymManagement.Models.tblMembership
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>tblMembership</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MembershipId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MembershipId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MembershipTypeId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MembershipTypeId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RegDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fees)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fees)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShiftId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShiftId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.MembershipId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

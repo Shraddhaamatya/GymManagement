@@ -1,0 +1,86 @@
+﻿@model GymManagement.Models.ViewModel.ProteinViewModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    // Except only numbers and dot (.) for salary textbox
+    function onlyDotsAndNumbers(event) {
+        var charCode = (event.which) ? event.which : event.keyCode
+        if (charCode == 46) {
+            return true;
+        }
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+
+
+    </script>
+
+<div class="module">
+    <div class="module-head">
+        <h3>Add Protein</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+            <div class="module-body table">
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+ 
+                    <div class="modal-body">
+
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.ProteinName)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.ProteinName)
+                            @Html.ValidationMessageFor(model => model.ProteinName)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Price)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Price, new {onkeypress="return onlyDotsAndNumbers(event)" })
+                            @Html.ValidationMessageFor(model => model.Price)
+                        </div>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Description)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Description)
+                            @Html.ValidationMessageFor(model => model.Description)
+                        </div>
+                        <div class="editor-field">
+                            <h2>@ViewBag.Message</h2>
+                        </div>
+
+                    </div>
+    
+                    <div class="modal-footer">
+
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+
+                        <button type="submit" class="btn btn-primary" name="cmd"><i class="fa fa-check"></i>&nbsp;Save</button>
+
+                    </div>
+                }
+
+
+
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

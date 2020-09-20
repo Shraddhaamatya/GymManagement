@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="708f5061dab5477c815f249d0b1c4313" Name="Diagram1" ZoomLevel="163">
+        <EntityTypeShape EntityType="GymDBModel.Role" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblAttendance" Width="1.5" PointX="2.875" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblGallery" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblMeasurement" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblMembership" Width="1.5" PointX="2.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblMembershipType" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblPayment" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblProtein" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblShift" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblUser" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.tblWorkout" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymDBModel.UserRole" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="GymDBModel.FK_UserRoles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblAttendance_tblMembership" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblMeasurement_tblMembership" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblMembership_tblMembershipType" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblMembership_tblShift" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblMembership_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblPayment_tblMembership" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_tblWorkout_tblMembership1" ManuallyRouted="false" />
+        <AssociationConnector Association="GymDBModel.FK_UserRoles_tblUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

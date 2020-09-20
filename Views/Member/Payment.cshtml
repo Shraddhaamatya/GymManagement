@@ -1,0 +1,103 @@
+﻿@model GymManagement.Models.ViewModel.PaymentViewModel
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+}
+<script src="~/scripts/jquery-1.8.0.min.js"></script>
+<script>
+// Except only numbers and dot (.) for salary textbox
+    function onlyDotsAndNumbers(event) {
+        var charCode = (event.which) ? event.which : event.keyCode
+        if (charCode == 46) {
+            return true;
+        }
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+
+
+    </script>
+<script type="text/javascript">
+    $(function () {
+        $("#MemberId").change(function () {
+            var selectedItem = $(this).val();
+            var MyAppUrlSettings = {
+                MyUsefulUrl: '@Url.Action("GetMemberTotalPaymentAmount","Member")'
+            }
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: MyAppUrlSettings.MyUsefulUrl,
+               
+                data: { "memberid": selectedItem },
+                success: function (result) {
+                    $("#PaidAmount").val(result)
+                    
+                 },
+                 error: function (xhr, ajaxOptions, thrownError) {
+                     alert('Failed to retrieve states.');
+                     statesProgress.hide();
+                 }
+             });
+        });
+    });
+     </script> 
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    
+    <div class="module">
+        <div class="module-head">
+            <h3>Member Payment</h3>
+        </div>
+        <div class="module-body">
+           
+                <div class="form-horizontal col-md-12">
+
+                   
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.MemberId)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownListFor(model => model.MemberId, new SelectList(ViewBag.Fullname,"MemberId","Fullname"),"Select Member")
+                        @Html.ValidationMessageFor(model => model.MemberId)
+                    </div>
+
+                  
+
+                    <div class="editor-label">
+                       Payment
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.PaidAmount, new { @onkeypress="return onlyDotsAndNumbers(event)"})
+                        @Html.ValidationMessageFor(model => model.PaidAmount)
+                    </div>
+
+                    
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.PaymentDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.PaymentDate, "{0:MM/dd/yyyy}", new {@readonly=true })
+                        @Html.ValidationMessageFor(model => model.PaymentDate)
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Create" />
+                    </p>
+                    <h2>@ViewBag.Message</h2>
+                    
+
+                </div>
+        </div>
+    </div>
+}
+    

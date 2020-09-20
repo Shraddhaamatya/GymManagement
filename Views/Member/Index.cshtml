@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GymManagement.Models.ViewModel.MemberViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>List of Members</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+            <a href="@Url.Action("Create", "Member")"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Create New</a>
+ <div class="module-body table">
+	 <table id="myTable" cellpadding="0" cellspacing="0" border="0" class="datatable-1 dataTable table table-bordered table-striped display " width="100%">
+	 	<thead>
+	 		<tr>
+
+	 			<th>
+	 				@Html.DisplayNameFor(model => model.Fullname)
+	 		</th>
+	 		<th>
+	 			@Html.DisplayNameFor(model => model.Email)
+	 	</th>
+	 	<th>
+	 		@Html.DisplayNameFor(model => model.Photo)
+	 </th>
+	 <th>
+	 	@Html.DisplayNameFor(model => model.Phone)
+	 </th>
+	 <th>
+	 	@Html.DisplayNameFor(model => model.Fees)
+	 </th>
+
+
+	 <th>Actions</th>
+	 </tr>
+	 </thead>
+
+
+	 @foreach (var item in Model)
+	 {
+	 	<tr>
+
+	 		<td>
+	 			@Html.DisplayFor(modelItem => item.Fullname)
+	 	</td>
+	 	<td>
+	 		@Html.DisplayFor(modelItem => item.Email)
+	 </td>
+	 <td>
+	 	@Html.DisplayFor(modelItem => item.Photo)
+	 </td>
+	 <td>
+	 	@Html.DisplayFor(modelItem => item.Phone)
+	 </td>
+
+
+	 <td>
+	 	@Html.DisplayFor(modelItem => item.Fees)
+	 </td>
+
+	 <td>
+	 	<a href="@Url.Action("Edit", "Member", new { id = item.MemberId })" class="editDialog btn btn-info">
+	 		<i class="fa
+fa-pencil-square-o"></i>&nbsp;Edit
+	 	</a>
+	 	<a href="@Url.Action("DeleteMember", "Member", new { id=item.MemberId})" class="fa fa-trash-o btn btn-danger">
+	 		<i class="fa
+fa-pencil-square-o"></i>&nbsp;Delete
+	 </td>
+	 </tr>
+ }
+
+	 </table>
+        </div>
+    </div>
+</div>
+</div>

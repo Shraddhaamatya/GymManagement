@@ -1,0 +1,780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GymDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="GymDBModelStoreContainer">
+          <EntitySet Name="Roles" EntityType="GymDBModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblAttendance" EntityType="GymDBModel.Store.tblAttendance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblGallery" EntityType="GymDBModel.Store.tblGallery" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMeasurement" EntityType="GymDBModel.Store.tblMeasurement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMembership" EntityType="GymDBModel.Store.tblMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMembershipType" EntityType="GymDBModel.Store.tblMembershipType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblPayment" EntityType="GymDBModel.Store.tblPayment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblProtein" EntityType="GymDBModel.Store.tblProtein" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblShift" EntityType="GymDBModel.Store.tblShift" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblUser" EntityType="GymDBModel.Store.tblUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblWorkout" EntityType="GymDBModel.Store.tblWorkout" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRoles" EntityType="GymDBModel.Store.UserRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblAttendance_tblMembership" Association="GymDBModel.Store.FK_tblAttendance_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMembership" />
+            <End Role="tblAttendance" EntitySet="tblAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMeasurement_tblMembership" Association="GymDBModel.Store.FK_tblMeasurement_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMembership" />
+            <End Role="tblMeasurement" EntitySet="tblMeasurement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMembership_tblMembershipType" Association="GymDBModel.Store.FK_tblMembership_tblMembershipType">
+            <End Role="tblMembershipType" EntitySet="tblMembershipType" />
+            <End Role="tblMembership" EntitySet="tblMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMembership_tblShift" Association="GymDBModel.Store.FK_tblMembership_tblShift">
+            <End Role="tblShift" EntitySet="tblShift" />
+            <End Role="tblMembership" EntitySet="tblMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMembership_tblUser" Association="GymDBModel.Store.FK_tblMembership_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblMembership" EntitySet="tblMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayment_tblMembership" Association="GymDBModel.Store.FK_tblPayment_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMembership" />
+            <End Role="tblPayment" EntitySet="tblPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblWorkout_tblMembership1" Association="GymDBModel.Store.FK_tblWorkout_tblMembership1">
+            <End Role="tblMembership" EntitySet="tblMembership" />
+            <End Role="tblWorkout" EntitySet="tblWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="GymDBModel.Store.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_tblUser" Association="GymDBModel.Store.FK_UserRoles_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAttendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttendanceDate" Type="date" />
+        </EntityType>
+        <EntityType Name="tblGallery">
+          <Key>
+            <PropertyRef Name="GalleryId" />
+          </Key>
+          <Property Name="GalleryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="tblMeasurement">
+          <Key>
+            <PropertyRef Name="MeasurementId" />
+          </Key>
+          <Property Name="MeasurementId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="Weight" Type="decimal" />
+          <Property Name="Chest" Type="decimal" />
+          <Property Name="Weist" Type="decimal" />
+          <Property Name="Hip" Type="decimal" />
+          <Property Name="Thigh" Type="decimal" />
+          <Property Name="Bicep" Type="decimal" />
+          <Property Name="Forearm" Type="decimal" />
+          <Property Name="MeasurementDate" Type="date" />
+        </EntityType>
+        <EntityType Name="tblMembership">
+          <Key>
+            <PropertyRef Name="MembershipId" />
+          </Key>
+          <Property Name="MembershipId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MembershipTypeId" Type="int" />
+          <Property Name="RegDate" Type="date" />
+          <Property Name="Fees" Type="decimal" />
+          <Property Name="ShiftId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMembershipType">
+          <Key>
+            <PropertyRef Name="MembershipTypeId" />
+          </Key>
+          <Property Name="MembershipTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" />
+          <Property Name="AllowedMonth" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="PaidAmount" Type="decimal" />
+          <Property Name="RemainingAmount" Type="decimal" />
+          <Property Name="PaymentDate" Type="date" />
+        </EntityType>
+        <EntityType Name="tblProtein">
+          <Key>
+            <PropertyRef Name="ProteinId" />
+          </Key>
+          <Property Name="ProteinId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProteinName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblShift">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="ShiftId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FromTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="ToTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Usertype" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblWorkout">
+          <Key>
+            <PropertyRef Name="WorkoutId" />
+          </Key>
+          <Property Name="WorkoutId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="WorkoutDays" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRolesId" />
+          </Key>
+          <Property Name="UserRolesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblAttendance_tblMembership">
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAttendance" Type="GymDBModel.Store.tblAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblAttendance">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMeasurement_tblMembership">
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMeasurement" Type="GymDBModel.Store.tblMeasurement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblMeasurement">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMembership_tblMembershipType">
+          <End Role="tblMembershipType" Type="GymDBModel.Store.tblMembershipType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembershipType">
+              <PropertyRef Name="MembershipTypeId" />
+            </Principal>
+            <Dependent Role="tblMembership">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMembership_tblShift">
+          <End Role="tblShift" Type="GymDBModel.Store.tblShift" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShift">
+              <PropertyRef Name="ShiftId" />
+            </Principal>
+            <Dependent Role="tblMembership">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMembership_tblUser">
+          <End Role="tblUser" Type="GymDBModel.Store.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblMembership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayment_tblMembership">
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPayment" Type="GymDBModel.Store.tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblWorkout_tblMembership1">
+          <End Role="tblMembership" Type="GymDBModel.Store.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblWorkout" Type="GymDBModel.Store.tblWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblWorkout">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="GymDBModel.Store.Roles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="GymDBModel.Store.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_tblUser">
+          <End Role="tblUser" Type="GymDBModel.Store.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="GymDBModel.Store.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GymDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GymDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Roles" EntityType="GymDBModel.Role" />
+          <EntitySet Name="tblAttendances" EntityType="GymDBModel.tblAttendance" />
+          <EntitySet Name="tblGalleries" EntityType="GymDBModel.tblGallery" />
+          <EntitySet Name="tblMeasurements" EntityType="GymDBModel.tblMeasurement" />
+          <EntitySet Name="tblMemberships" EntityType="GymDBModel.tblMembership" />
+          <EntitySet Name="tblMembershipTypes" EntityType="GymDBModel.tblMembershipType" />
+          <EntitySet Name="tblPayments" EntityType="GymDBModel.tblPayment" />
+          <EntitySet Name="tblProteins" EntityType="GymDBModel.tblProtein" />
+          <EntitySet Name="tblShifts" EntityType="GymDBModel.tblShift" />
+          <EntitySet Name="tblUsers" EntityType="GymDBModel.tblUser" />
+          <EntitySet Name="tblWorkouts" EntityType="GymDBModel.tblWorkout" />
+          <EntitySet Name="UserRoles" EntityType="GymDBModel.UserRole" />
+          <AssociationSet Name="FK_UserRoles_Roles" Association="GymDBModel.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAttendance_tblMembership" Association="GymDBModel.FK_tblAttendance_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+            <End Role="tblAttendance" EntitySet="tblAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMeasurement_tblMembership" Association="GymDBModel.FK_tblMeasurement_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+            <End Role="tblMeasurement" EntitySet="tblMeasurements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMembership_tblMembershipType" Association="GymDBModel.FK_tblMembership_tblMembershipType">
+            <End Role="tblMembershipType" EntitySet="tblMembershipTypes" />
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMembership_tblShift" Association="GymDBModel.FK_tblMembership_tblShift">
+            <End Role="tblShift" EntitySet="tblShifts" />
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMembership_tblUser" Association="GymDBModel.FK_tblMembership_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPayment_tblMembership" Association="GymDBModel.FK_tblPayment_tblMembership">
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+            <End Role="tblPayment" EntitySet="tblPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblWorkout_tblMembership1" Association="GymDBModel.FK_tblWorkout_tblMembership1">
+            <End Role="tblMembership" EntitySet="tblMemberships" />
+            <End Role="tblWorkout" EntitySet="tblWorkouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_tblUser" Association="GymDBModel.FK_UserRoles_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserRoles" Relationship="GymDBModel.FK_UserRoles_Roles" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="tblAttendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AttendanceDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblMembership" Relationship="GymDBModel.FK_tblAttendance_tblMembership" FromRole="tblAttendance" ToRole="tblMembership" />
+        </EntityType>
+        <EntityType Name="tblGallery">
+          <Key>
+            <PropertyRef Name="GalleryId" />
+          </Key>
+          <Property Name="GalleryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Photo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblMeasurement">
+          <Key>
+            <PropertyRef Name="MeasurementId" />
+          </Key>
+          <Property Name="MeasurementId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Chest" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Weist" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Hip" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Thigh" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Bicep" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Forearm" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MeasurementDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblMembership" Relationship="GymDBModel.FK_tblMeasurement_tblMembership" FromRole="tblMeasurement" ToRole="tblMembership" />
+        </EntityType>
+        <EntityType Name="tblMembership">
+          <Key>
+            <PropertyRef Name="MembershipId" />
+          </Key>
+          <Property Name="MembershipId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MembershipTypeId" Type="Int32" />
+          <Property Name="RegDate" Type="DateTime" Precision="0" />
+          <Property Name="Fees" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ShiftId" Type="Int32" />
+          <NavigationProperty Name="tblAttendances" Relationship="GymDBModel.FK_tblAttendance_tblMembership" FromRole="tblMembership" ToRole="tblAttendance" />
+          <NavigationProperty Name="tblMeasurements" Relationship="GymDBModel.FK_tblMeasurement_tblMembership" FromRole="tblMembership" ToRole="tblMeasurement" />
+          <NavigationProperty Name="tblMembershipType" Relationship="GymDBModel.FK_tblMembership_tblMembershipType" FromRole="tblMembership" ToRole="tblMembershipType" />
+          <NavigationProperty Name="tblShift" Relationship="GymDBModel.FK_tblMembership_tblShift" FromRole="tblMembership" ToRole="tblShift" />
+          <NavigationProperty Name="tblUser" Relationship="GymDBModel.FK_tblMembership_tblUser" FromRole="tblMembership" ToRole="tblUser" />
+          <NavigationProperty Name="tblPayments" Relationship="GymDBModel.FK_tblPayment_tblMembership" FromRole="tblMembership" ToRole="tblPayment" />
+          <NavigationProperty Name="tblWorkouts" Relationship="GymDBModel.FK_tblWorkout_tblMembership1" FromRole="tblMembership" ToRole="tblWorkout" />
+        </EntityType>
+        <EntityType Name="tblMembershipType">
+          <Key>
+            <PropertyRef Name="MembershipTypeId" />
+          </Key>
+          <Property Name="MembershipTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AllowedMonth" Type="Int32" />
+          <NavigationProperty Name="tblMemberships" Relationship="GymDBModel.FK_tblMembership_tblMembershipType" FromRole="tblMembershipType" ToRole="tblMembership" />
+        </EntityType>
+        <EntityType Name="tblPayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblMembership" Relationship="GymDBModel.FK_tblPayment_tblMembership" FromRole="tblPayment" ToRole="tblMembership" />
+        </EntityType>
+        <EntityType Name="tblProtein">
+          <Key>
+            <PropertyRef Name="ProteinId" />
+          </Key>
+          <Property Name="ProteinId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProteinName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblShift">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="ShiftId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FromTime" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ToTime" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblMemberships" Relationship="GymDBModel.FK_tblMembership_tblShift" FromRole="tblShift" ToRole="tblMembership" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Usertype" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Fullname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Photo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblMemberships" Relationship="GymDBModel.FK_tblMembership_tblUser" FromRole="tblUser" ToRole="tblMembership" />
+          <NavigationProperty Name="UserRoles" Relationship="GymDBModel.FK_UserRoles_tblUser" FromRole="tblUser" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="tblWorkout">
+          <Key>
+            <PropertyRef Name="WorkoutId" />
+          </Key>
+          <Property Name="WorkoutId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="WorkoutDays" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tblMembership" Relationship="GymDBModel.FK_tblWorkout_tblMembership1" FromRole="tblWorkout" ToRole="tblMembership" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRolesId" />
+          </Key>
+          <Property Name="UserRolesId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="GymDBModel.FK_UserRoles_Roles" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="tblUser" Relationship="GymDBModel.FK_UserRoles_tblUser" FromRole="UserRoles" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="GymDBModel.Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="GymDBModel.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAttendance_tblMembership">
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAttendance" Type="GymDBModel.tblAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblAttendance">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMeasurement_tblMembership">
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMeasurement" Type="GymDBModel.tblMeasurement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblMeasurement">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMembership_tblMembershipType">
+          <End Role="tblMembershipType" Type="GymDBModel.tblMembershipType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembershipType">
+              <PropertyRef Name="MembershipTypeId" />
+            </Principal>
+            <Dependent Role="tblMembership">
+              <PropertyRef Name="MembershipTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMembership_tblShift">
+          <End Role="tblShift" Type="GymDBModel.tblShift" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShift">
+              <PropertyRef Name="ShiftId" />
+            </Principal>
+            <Dependent Role="tblMembership">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMembership_tblUser">
+          <End Role="tblUser" Type="GymDBModel.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblMembership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPayment_tblMembership">
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPayment" Type="GymDBModel.tblPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblPayment">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblWorkout_tblMembership1">
+          <End Role="tblMembership" Type="GymDBModel.tblMembership" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblWorkout" Type="GymDBModel.tblWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembership">
+              <PropertyRef Name="MembershipId" />
+            </Principal>
+            <Dependent Role="tblWorkout">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_tblUser">
+          <End Role="tblUser" Type="GymDBModel.tblUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="GymDBModel.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GymDBModelStoreContainer" CdmEntityContainer="GymDBEntities">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="GymDBModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAttendances">
+            <EntityTypeMapping TypeName="GymDBModel.tblAttendance">
+              <MappingFragment StoreEntitySet="tblAttendance">
+                <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGalleries">
+            <EntityTypeMapping TypeName="GymDBModel.tblGallery">
+              <MappingFragment StoreEntitySet="tblGallery">
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMeasurements">
+            <EntityTypeMapping TypeName="GymDBModel.tblMeasurement">
+              <MappingFragment StoreEntitySet="tblMeasurement">
+                <ScalarProperty Name="MeasurementId" ColumnName="MeasurementId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Chest" ColumnName="Chest" />
+                <ScalarProperty Name="Weist" ColumnName="Weist" />
+                <ScalarProperty Name="Hip" ColumnName="Hip" />
+                <ScalarProperty Name="Thigh" ColumnName="Thigh" />
+                <ScalarProperty Name="Bicep" ColumnName="Bicep" />
+                <ScalarProperty Name="Forearm" ColumnName="Forearm" />
+                <ScalarProperty Name="MeasurementDate" ColumnName="MeasurementDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMemberships">
+            <EntityTypeMapping TypeName="GymDBModel.tblMembership">
+              <MappingFragment StoreEntitySet="tblMembership">
+                <ScalarProperty Name="MembershipId" ColumnName="MembershipId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="Fees" ColumnName="Fees" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMembershipTypes">
+            <EntityTypeMapping TypeName="GymDBModel.tblMembershipType">
+              <MappingFragment StoreEntitySet="tblMembershipType">
+                <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+                <ScalarProperty Name="MembershipName" ColumnName="MembershipName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AllowedMonth" ColumnName="AllowedMonth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPayments">
+            <EntityTypeMapping TypeName="GymDBModel.tblPayment">
+              <MappingFragment StoreEntitySet="tblPayment">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProteins">
+            <EntityTypeMapping TypeName="GymDBModel.tblProtein">
+              <MappingFragment StoreEntitySet="tblProtein">
+                <ScalarProperty Name="ProteinId" ColumnName="ProteinId" />
+                <ScalarProperty Name="ProteinName" ColumnName="ProteinName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblShifts">
+            <EntityTypeMapping TypeName="GymDBModel.tblShift">
+              <MappingFragment StoreEntitySet="tblShift">
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="GymDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWorkouts">
+            <EntityTypeMapping TypeName="GymDBModel.tblWorkout">
+              <MappingFragment StoreEntitySet="tblWorkout">
+                <ScalarProperty Name="WorkoutId" ColumnName="WorkoutId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="WorkoutDays" ColumnName="WorkoutDays" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="GymDBModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserRolesId" ColumnName="UserRolesId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

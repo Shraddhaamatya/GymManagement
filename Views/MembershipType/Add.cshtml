@@ -1,0 +1,85 @@
+﻿@model GymManagement.Models.ViewModel.MembershipTypeViewModel
+
+
+
+<script>
+    function validate() {
+        var isValid = true;
+        if ($('#MembershipName').val().trim() == "") {
+            $('#MembershipName').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#MembershipName').css('border-color', 'lightgrey');
+        }
+        if ($('#Price').val().trim() == "") {
+            $('#Price').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Price').css('border-color', 'lightgrey');
+        }
+
+        return isValid;
+    };
+    function Add() {
+        var res = validate();
+        if (res == false) {
+            return false;
+        }
+    };
+    function HideValidationSummary() {
+        $(".validation-summary-errors").hide();
+    }
+   
+
+</script>
+<style>
+   
+    span.field-validation-error{
+     color:red;
+}
+</style>
+
+<script src="~/scripts/jquery.validate.min.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Ajax.BeginForm("Add", "MembershipType", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "div-record", OnSuccess = "$('.close').click()" }))
+{
+    <span class="alert-danger">
+    @Html.ValidationSummary()
+</span>
+    <div class="modal-body">
+        
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.MembershipName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.MembershipName)
+                        @Html.ValidationMessageFor(model => model.MembershipName)
+                    </div>
+               
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AllowedMonth)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AllowedMonth)
+            @Html.ValidationMessageFor(model => model.AllowedMonth)
+        </div>
+
+       
+</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Close</button>
+        <button type="submit" class="btn btn-primary" name="cmd" onclick="Add();"><i class="fa fa-check"></i>&nbsp;Save</button>
+    </div>
+}
+

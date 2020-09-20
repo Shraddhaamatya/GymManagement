@@ -1,0 +1,143 @@
+﻿@model GymManagement.Models.ViewModel.MemberViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#MembershipTypeId").change(function () {
+            var selectedItem = $(this).val();
+            
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "Member/GetPricebyMembershiptypeId",
+                data: { "membershiptypeId": selectedItem },
+                success: function (result) {
+                    $("#Price").val(result)
+                    
+                 },
+                 error: function (xhr, ajaxOptions, thrownError) {
+                     alert('Failed to retrieve states.');
+                     statesProgress.hide();
+                 }
+             });
+        });
+    });
+     </script> 
+@using (Html.BeginForm("Edit", "Member", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="module">
+        <div class="module-head">
+            <h3>Edit Membership Registration</h3>
+        </div>
+        <div class="module-body">
+            <fieldset>
+                <legend>Edit</legend>
+                <div class="form-horizontal col-md-12">
+                    <div class="col-sm-6" style="float: left; padding-left: 30px; padding-right: 30px;">
+                        <div class="editor-label">
+                            @Html.HiddenFor(model => model.UserId)
+                        </div>
+                        <div class="editor-label">
+                            @Html.HiddenFor(model => model.MemberId)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Fullname)
+                            @Html.ValidationMessageFor(model => model.Fullname)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Email)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Photo)
+                            @Html.HiddenFor(model => model.Photo)
+                        </div>
+                        <div class="editor-label">
+                            <img src="~/MemberPhoto/@Model.Photo" height="200" width="200" />
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Photo, new { Type="file",@class="form-control"})
+                            
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Phone)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Phone)
+                            @Html.ValidationMessageFor(model => model.Phone)
+                        </div>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Gender)
+                        </div>
+                        <div class="editor-field">
+                            @Html.RadioButtonFor(model => model.Gender, "Male", new { Checked = "checked" })Male
+             @Html.RadioButtonFor(model => model.Gender, "Female")Female
+
+            @Html.ValidationMessageFor(model => model.Gender)
+                        </div>
+                    </div>
+                    <div class="col-sm-6" style="float: left; padding-left: 30px; padding-right: 30px">
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.MembershipTypeId)
+                        </div>
+                        <div class="editor-field">
+                            @Html.DropDownListFor(model => model.MembershipTypeId, new SelectList(ViewBag.MembershipType, "MembershipTypeId", "MembershipName"), "Choose Membership")
+                            @Html.ValidationMessageFor(model => model.MembershipTypeId)
+                        </div>
+
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Fees)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Fees)
+                            @Html.ValidationMessageFor(model => model.Fees)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.RegDate)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.RegDate)
+                            @Html.ValidationMessageFor(model => model.RegDate)
+                        </div>
+
+                        
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.ShiftId)
+                        </div>
+                        <div class="editor-field">
+                               @Html.DropDownListFor(model => model.ShiftId, new SelectList(ViewBag.Shift, "ShiftId", "ShiftName"), "Choose Shift")
+                            @Html.ValidationMessageFor(model => model.ShiftId)
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+            
+
+        </div>
+         <div class="modal-footer">
+        @Html.ActionLink("Back to List", "Index", null, new { @class="btn btn-default"})
+        <button type="submit" class="btn btn-primary" name="cmd"><i class="fa fa-check"></i>&nbsp;Save Changes</button>
+             <h2>@ViewBag.Message</h2>
+    </div>
+    </div>
+      
+             
+   
+}

@@ -1,0 +1,68 @@
+﻿@model GymManagement.Models.ViewModel.ShiftViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>Edit Shift</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+<div class="module-body table">
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m=>m.ShiftId)
+    <div class="modal-body">
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShiftName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ShiftName)
+            @Html.ValidationMessageFor(model => model.ShiftName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromTime)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FromTime)
+            @Html.ValidationMessageFor(model => model.FromTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToTime)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ToTime)
+            @Html.ValidationMessageFor(model => model.ToTime)
+        </div>
+         <div class="editor-field">
+        <h2>@ViewBag.Message</h2> 
+            </div>
+
+
+    </div>
+    <div class="modal-footer">
+       
+        @Html.ActionLink("Back to List", "Index", null, new { @class="btn btn-default"})
+        <button type="submit" class="btn btn-primary" name="cmd"><i class="fa fa-check"></i>&nbsp;Save Changes</button>
+    </div>
+}
+
+
+
+
+    
+</div>
+    </div>
+            </div>
+        </div>
+   

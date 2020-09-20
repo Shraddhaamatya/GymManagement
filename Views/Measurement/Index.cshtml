@@ -1,0 +1,99 @@
+﻿@model IEnumerable<GymManagement.Models.ViewModel.MeasurementViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>List Measurement</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+<a href="@Url.Action("Add", "Measurement")"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Create New</a>
+    
+<div class="module-body table">
+    <table id="myTable" cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thigh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bicep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Forearm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeasurementDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thigh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bicep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forearm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MeasurementDate)
+        </td>
+        <td>
+           <a href="@Url.Action("Edit", "Measurement", new { id=item.MeasurementId})" class="editDialog btn btn-info">
+                        <i class="fa
+fa-pencil-square-o"></i>&nbsp;Edit
+                    </a>
+           
+        </td>
+    </tr>
+}
+
+</table>
+
+
+            </div>
+    </div>
+            </div>
+        </div>

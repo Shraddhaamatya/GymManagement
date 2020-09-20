@@ -1,0 +1,54 @@
+﻿@model IEnumerable<GymManagement.Models.ViewModel.ProteinViewModel>
+
+@{
+    ViewBag.Title = "ViewProtein";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="module">
+    <div class="module-head">
+        <h3>Protein</h3>
+    </div>
+    <div class="module-body">
+
+        <div class="col-md-9">
+    
+<div class="module-body table">
+    <table id="myTable" cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+
+        <tr>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.ProteinName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProteinName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+               
+            </tr>
+        }
+    </table>
+</div>
+    </div>
+            </div>
+        </div>
+

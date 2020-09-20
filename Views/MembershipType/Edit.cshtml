@@ -1,0 +1,36 @@
+﻿@model GymManagement.Models.tblMembershipType
+
+@using (Ajax.BeginForm("Edit", "MembershipType", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "div-record", OnSuccess = "$('.close').click()" }))
+{
+    @Html.HiddenFor(m => m.MembershipTypeId)
+    <div class="modal-body">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.MembershipName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.MembershipName)
+                        @Html.ValidationMessageFor(model => model.MembershipName)
+                    </div>
+               
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.AllowedMonth)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AllowedMonth)
+            @Html.ValidationMessageFor(model => model.AllowedMonth)
+        </div>
+
+       
+</div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Close</button>
+        <button type="submit" class="btn btn-primary" name="cmd"><i class="fa fa-check"></i>&nbsp;Save Changes</button>
+    </div>
+}

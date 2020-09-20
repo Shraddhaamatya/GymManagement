@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GymDBModelStoreContainer" CdmEntityContainer="GymDBEntities">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="GymDBModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAttendances">
+      <EntityTypeMapping TypeName="GymDBModel.tblAttendance">
+        <MappingFragment StoreEntitySet="tblAttendance">
+          <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGalleries">
+      <EntityTypeMapping TypeName="GymDBModel.tblGallery">
+        <MappingFragment StoreEntitySet="tblGallery">
+          <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMeasurements">
+      <EntityTypeMapping TypeName="GymDBModel.tblMeasurement">
+        <MappingFragment StoreEntitySet="tblMeasurement">
+          <ScalarProperty Name="MeasurementId" ColumnName="MeasurementId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Chest" ColumnName="Chest" />
+          <ScalarProperty Name="Weist" ColumnName="Weist" />
+          <ScalarProperty Name="Hip" ColumnName="Hip" />
+          <ScalarProperty Name="Thigh" ColumnName="Thigh" />
+          <ScalarProperty Name="Bicep" ColumnName="Bicep" />
+          <ScalarProperty Name="Forearm" ColumnName="Forearm" />
+          <ScalarProperty Name="MeasurementDate" ColumnName="MeasurementDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMemberships">
+      <EntityTypeMapping TypeName="GymDBModel.tblMembership">
+        <MappingFragment StoreEntitySet="tblMembership">
+          <ScalarProperty Name="MembershipId" ColumnName="MembershipId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMembershipTypes">
+      <EntityTypeMapping TypeName="GymDBModel.tblMembershipType">
+        <MappingFragment StoreEntitySet="tblMembershipType">
+          <ScalarProperty Name="MembershipTypeId" ColumnName="MembershipTypeId" />
+          <ScalarProperty Name="MembershipName" ColumnName="MembershipName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AllowedMonth" ColumnName="AllowedMonth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPayments">
+      <EntityTypeMapping TypeName="GymDBModel.tblPayment">
+        <MappingFragment StoreEntitySet="tblPayment">
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProteins">
+      <EntityTypeMapping TypeName="GymDBModel.tblProtein">
+        <MappingFragment StoreEntitySet="tblProtein">
+          <ScalarProperty Name="ProteinId" ColumnName="ProteinId" />
+          <ScalarProperty Name="ProteinName" ColumnName="ProteinName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShifts">
+      <EntityTypeMapping TypeName="GymDBModel.tblShift">
+        <MappingFragment StoreEntitySet="tblShift">
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+          <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="GymDBModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWorkouts">
+      <EntityTypeMapping TypeName="GymDBModel.tblWorkout">
+        <MappingFragment StoreEntitySet="tblWorkout">
+          <ScalarProperty Name="WorkoutId" ColumnName="WorkoutId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="WorkoutDays" ColumnName="WorkoutDays" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="GymDBModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="UserRolesId" ColumnName="UserRolesId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

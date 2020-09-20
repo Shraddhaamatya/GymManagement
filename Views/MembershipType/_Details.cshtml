@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GymManagement.Models.tblMembershipType>
+
+
+
+
+ <div class="module-body table">
+    <table id="myTable" cellpadding="0" cellspacing="0" border="0" class="datatable-1 dataTable table table-bordered table-striped	 display " width="100%">
+		<thead>
+			<tr>
+
+				<th>
+					@Html.DisplayNameFor(model => model.MembershipName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Price)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.AllowedMonth)
+				</th>
+				<th>Action</th>
+
+			</tr>
+		</thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllowedMonth)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "MembershipType", new { id = item.MembershipTypeId })" class = "editDialog btn btn-info"><i class="fa
+fa-pencil-square-o"></i>&nbsp;Edit</a>
+                  @Ajax.ActionLink("Delete", "Delete", "MembershipType", new { @id = item.MembershipTypeId }, new AjaxOptions { HttpMethod = "GET", Confirm="Are you sure want to delete?", UpdateTargetId = "div-record" }, new { @class = "fa fa-trash-o btn btn-danger" })
+            </td>
+           
+        </tr>
+    }
+
+</table>
+    </div>
+
+  
+
+<script>
+    $(document).ready(function () {
+        $('#Add').click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $('.divForAdd').html(response);
+            });
+            $('#Add-Model').modal({
+                backdrop: 'static',
+            }, 'show');
+        });
+        $('.editDialog').click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $('.divForUpdate').html(response);
+            });
+            $('#Edit-Model').modal({
+                backdrop: 'static',
+            }, 'show');
+        });
+    });
+
+
+
+</script>
+
+
+	
+
